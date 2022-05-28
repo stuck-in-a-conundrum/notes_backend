@@ -11,7 +11,7 @@ class NoteCreateSerializer(serializers.ModelSerializer):
         desc=data['desc']
         color=data['color']
         #created=data['created']
-        note = Note.objects.create(creator=owner, title=title,desc=desc,color=color)
+        note = Note.objects.create(owner=owner, title=title,desc=desc,color=color)
         return note.id
 
     class Meta:
