@@ -1,2 +1,3 @@
-release: python manage.py migrate
-web: gunicorn myNotes.wsgi
+web: gunicorn myNotes.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
