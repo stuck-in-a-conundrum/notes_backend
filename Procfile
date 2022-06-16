@@ -1,1 +1,2 @@
-web: gunicorn myNotes.wsgi
+release: python manage.py migrate
+web: gunicorn workshops.wsgi
