@@ -23,9 +23,9 @@ admin.site.site_header = 'MyNotes App Backend Administration'
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Todo App API",
+        title="Notes App API",
         default_version='v1',
-        description="This is the Todo App API.",
+        description="This is the Notes App API.",
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
