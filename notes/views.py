@@ -21,12 +21,12 @@ class NotesGetList(generics.GenericAPIView):
         for i in serializer.data:
             note = Note.objects.get(id=i['id'])
             response.append({
-                'id': note.id,
+                '_id': note.id,
                 'title': note.title,
                 'color':note.color,
                 'creator': note.owner.username,
                 'createdTime':note.createdTime,
-                'desc': note.desc,
+                'description': note.description,
             })
         return Response(response,status=status.HTTP_200_OK)
 
@@ -59,11 +59,11 @@ class NoteDetail(generics.GenericAPIView, mixins.RetrieveModelMixin, mixins.Upda
         response=[]
         if note.owner==request.user:
             response.append({
-                'id': note.id,
+                '_id': note.id,
                 'title': note.title,
                 'color':note.color,
                 'createdTime':note.createdTime,
-                'desc': note.desc,
+                'description': note.description,
             })
             return Response(response, status=status.HTTP_200_OK)
         else:
@@ -96,6 +96,6 @@ class NoteCreateView(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         id = serializer.save()
         return Response({
-            "id": id,
+            "_id": id,
         }, status=status.HTTP_201_CREATED)
 # Create your views here.

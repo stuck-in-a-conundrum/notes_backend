@@ -8,18 +8,18 @@ class NoteCreateSerializer(serializers.ModelSerializer):
         data= self.validated_data
         owner = self.context['request'].user
         title = data['title']
-        desc=data['desc']
+        description=data['description']
         color=data['color']
         #created=data['created']
-        note = Note.objects.create(owner=owner, title=title,desc=desc,color=color)
+        note = Note.objects.create(owner=owner, title=title,description=description,color=color,)
         return note.id
 
     class Meta:
         model = Note
-        fields = ('id', 'title', 'desc','createdTime','color',)
+        fields = ('id', 'title', 'description','createdTime','color',)
 
 
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = ('id', 'title', 'desc','createdTime','color')
+        fields = ('id', 'title', 'description','createdTime','color')
