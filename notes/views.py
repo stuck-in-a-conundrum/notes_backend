@@ -25,7 +25,7 @@ class NotesGetList(generics.GenericAPIView):
                 'title': note.title,
                 'color':note.color,
                 'creator': note.owner.username,
-                'created':note.created,
+                'createdTime':note.createdTime,
                 'desc': note.desc,
             })
         return Response(response,status=status.HTTP_200_OK)
@@ -62,7 +62,7 @@ class NoteDetail(generics.GenericAPIView, mixins.RetrieveModelMixin, mixins.Upda
                 'id': note.id,
                 'title': note.title,
                 'color':note.color,
-                'created':note.created,
+                'createdTime':note.createdTime,
                 'desc': note.desc,
             })
             return Response(response, status=status.HTTP_200_OK)
